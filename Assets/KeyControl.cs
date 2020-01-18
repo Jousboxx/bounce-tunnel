@@ -15,7 +15,7 @@ public class KeyControl : MonoBehaviour
     [SerializeField] private string BrakeKeyName = "space";
 
     Rigidbody RB;
-    private float Speed = 20.0f;
+    private float Speed = 3.0f;
 
     //Stores the rotation direction that the playerBall is facing
     private Quaternion FacingDirection;
