@@ -26,7 +26,7 @@ public class MouseView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if(!MenuToggler.GameIsPaused){
+		if(!PauseMenu.GameIsPaused){
         //Add mouse motions to the Yaw and Pitch variables
         Yaw += SpeedX * Input.GetAxis(MouseXName);
         Pitch -= SpeedY * Input.GetAxis(MouseYName);

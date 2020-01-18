@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuToggler : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
-	public static bool GameIsPaused = false;
+    public static bool GameIsPaused = false;
 	
 	[SerializeField] private string PauseKeyName = "p";
 	
