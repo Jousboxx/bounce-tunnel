@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MouseView : MonoBehaviour
 {
+    //Random comment
 
     //Control names in Unity for mouse X and Y
     [SerializeField] private string MouseXName = "Mouse X";
