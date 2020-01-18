@@ -15,7 +15,7 @@ public class bouncePad : MonoBehaviour
 		var yAngle = transform.eulerAngles.y * (Mathf.PI/180);
 		var zAngle = transform.eulerAngles.z * (Mathf.PI/180);
 
-		impulse = new Vector3(Mathf.Sin(zAngle) * -1 * blast, Mathf.Cos(yAngle) * blast, Mathf.Sin(xAngle) * blast);
+		impulse = new Vector3(Mathf.Sin(zAngle) * -1 * blast, Mathf.Cos(xAngle + zAngle) * blast, Mathf.Sin(xAngle) * blast);
     }
 
     // Update is called once per frame
