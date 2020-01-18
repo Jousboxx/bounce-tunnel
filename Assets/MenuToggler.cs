@@ -6,8 +6,9 @@ public class MenuToggler : MonoBehaviour
 {
 	public static bool GameIsPaused = false;
 	
+	[SerializeField] private string PauseKeyName = "p";
+	
 	public GameObject pauseMenuUI;
-
 	// Start is called before the first frame update
     void Start()
     {
@@ -18,13 +19,16 @@ public class MenuToggler : MonoBehaviour
     void Update()
     {
 		//when escape is pressed, the object is set to an active state that it isn't currently in
-        if(Input.GetKeyDown(KeyCode.Escape))
+        //if(Input.GetKeyDown(KeyCode.Escape))
+		if(Input.GetKeyDown(PauseKeyName))
 		{
 			if(GameIsPaused){
 				Resume();
+				Cursor.lockState = CursorLockMode.Locked;
 			}
 			else {
 				Pause();
+				Cursor.lockState = CursorLockMode.None;
 			}
 		}
     }
