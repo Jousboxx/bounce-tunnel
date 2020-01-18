@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MouseView : MonoBehaviour
 {
-    //Random comment
 
     //Control names in Unity for mouse X and Y
     [SerializeField] private string MouseXName = "Mouse X";
@@ -27,16 +26,18 @@ public class MouseView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if(!MenuToggler.GameIsPaused){
         //Add mouse motions to the Yaw and Pitch variables
         Yaw += SpeedX * Input.GetAxis(MouseXName);
         Pitch -= SpeedY * Input.GetAxis(MouseYName);
 
         //Transform the angle of this object (the ball)
         transform.eulerAngles = new Vector3(Pitch, Yaw, 0.0f);
+		}
 
     }
 
-     private void LockCursor(){
+    public static void LockCursor(){
         Cursor.lockState = CursorLockMode.Locked;
     }
 }
