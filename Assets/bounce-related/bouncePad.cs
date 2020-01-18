@@ -9,8 +9,6 @@ public class bouncePad : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		var boxCollider = gameObject.AddComponent<BoxCollider>();
-		boxCollider.isTrigger = true;
 		var xAngle = transform.eulerAngles.x * (Mathf.PI/180);
 		var yAngle = transform.eulerAngles.y * (Mathf.PI/180);
 		var zAngle = transform.eulerAngles.z * (Mathf.PI/180);
