@@ -35,10 +35,10 @@ public class KeyControl : MonoBehaviour
         }
 
         //Debug.Log(RB.velocity.magnitude);
-        if (RB.velocity.magnitude > 3)
-        {
-            RB.velocity = RB.velocity * 0.97f;
-        }
+        //if (RB.velocity.magnitude > 3)
+        //{
+        //    RB.velocity = RB.velocity * 0.97f;
+        //}
 
         timeSinceBoost += Time.deltaTime;
 
