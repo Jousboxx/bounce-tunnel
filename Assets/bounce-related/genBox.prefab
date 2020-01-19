@@ -91,7 +91,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 50, y: 50, z: 50}
+  m_Size: {x: 100, y: 100, z: 50}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6232173722752116206
 MonoBehaviour:
@@ -105,9 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 832a0010113f6c14897cd614bec51ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toSpawn: {fileID: 1755610043919737478, guid: 4bfcdc0a996a75442976ba94c9e63fd9, type: 3}
+  toSpawn: {fileID: 3163882147598580670, guid: e476522d0ea42a04b93898348c33ecea, type: 3}
+  DeathObject: {fileID: 7287176401449558942, guid: 0af2470f766a3784e991c4f5e1fc84e6,
+    type: 3}
   me: {fileID: 487898616903948575}
-  numToSpawn: 15
+  numToSpawn: 6
   SpawnRadius: 10
   SpawnLength: 25
   preSpawnDistance: 100

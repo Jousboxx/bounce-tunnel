@@ -11,7 +11,7 @@ public class KeyControl : MonoBehaviour
     [SerializeField] private string latchKey = "w";
 
     Rigidbody RB;
-    private float Speed = 800.0f;
+    private float Speed = 20.0f;
 
     private float tempVelocity = 0;
 
@@ -47,10 +47,11 @@ public class KeyControl : MonoBehaviour
         FacingDirection = RB.rotation;
 
 
-        //Apply forces on ball on up directional key press
-        if(Input.GetKeyDown(boostKey) && NewBehaviourScript.currTime >= 3.333){
-            RB.AddForce(FacingDirection * Vector3.forward * Speed, ForceMode.Force);
-            NewBehaviourScript.currTime -= 3.333f;
+        //Apply forces on ball on boost key press
+        if(Input.GetKeyDown(boostKey) && NewBehaviourScript.currTime >= 1){
+            RB.AddForce(RB.velocity * (-0.6f), ForceMode.Impulse);
+            RB.AddForce(FacingDirection * Vector3.forward * Speed, ForceMode.Impulse);
+            NewBehaviourScript.currTime -= 1f;
             framesSinceBoost = 0;
         }else if(framesSinceBoost > 1){
             //We know we didn't boost this frame or the last frame
@@ -80,13 +81,13 @@ public class KeyControl : MonoBehaviour
 
         //Engage latch on press
         if(latchKeyPressed && (! latchEngaged)){
-            if(timeSinceBounce < 30){
+            if(timeSinceBounce < 30 && NewBehaviourScript.currTime > 1.0f){
                  engageLatch();
             }
         }
 
         //Disengage latch on release
-        if(! latchKeyPressed && latchEngaged){
+        if((! latchKeyPressed) && latchEngaged){
             disengageLatch();
 
         }
@@ -105,13 +106,13 @@ public class KeyControl : MonoBehaviour
     }
 
     void engageLatch(){
-        tempVelocity = RB.velocity.magnitude / 2; //Don't ask me when this needs to be divided by 2, it just does
+        tempVelocity = RB.velocity.magnitude;
         RB.velocity = new Vector3(0, 0, 0);
         latchEngaged = true;
     }
 
     void disengageLatch(){
-        impulse = (FacingDirection * Vector3.forward * (tempVelocity * 1.0f)); //Give a slight boost on latch release
+        impulse = (FacingDirection * Vector3.forward * (tempVelocity * 1.2f)); //Give a slight boost on latch release
         RB.AddForce(impulse, ForceMode.Impulse);
 
         //Boost mana upon release of latch

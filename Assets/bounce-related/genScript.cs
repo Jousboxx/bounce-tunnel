@@ -7,6 +7,9 @@ public class genScript : MonoBehaviour
     // Reference to the Prefab. Drag a Prefab into this field in the Inspector.
     public GameObject toSpawn;
 
+	//Death panels that will surround the entire "tunnel"
+	public GameObject DeathObject;
+
 	//Thing to spawn more of (set to this object in Unity)
 	public GameObject me;
 
@@ -38,13 +41,34 @@ public class genScript : MonoBehaviour
 			//breaks without this sometimes, it sometimes initializes with the collider not like we want it
 			obj.GetComponent<Collider>().enabled = false;
 			obj.GetComponent<Collider>().enabled = true;
+
+			//Spawn death pads on the top, bottom, left, and right
+			obj = Instantiate(DeathObject, new Vector3(transform.position.x, transform.position.y + (SpawnRadius * 1.4f), transform.position.z + preSpawnDistance), Quaternion.identity); 
+			//breaks without this sometimes, it sometimes initializes with the collider not like we want it
+			obj.GetComponent<Collider>().enabled = false;
+			obj.GetComponent<Collider>().enabled = true;
+
+			obj = Instantiate(DeathObject, new Vector3(transform.position.x, transform.position.y - (SpawnRadius * 1.4f), transform.position.z + preSpawnDistance), Quaternion.identity);
+			//breaks without this sometimes, it sometimes initializes with the collider not like we want it
+			obj.GetComponent<Collider>().enabled = false;
+			obj.GetComponent<Collider>().enabled = true;
+
+			obj = Instantiate(DeathObject, new Vector3(transform.position.x + (SpawnRadius * 1.4f), transform.position.y, transform.position.z + preSpawnDistance), Quaternion.Euler(0, 0, 90));
+			//breaks without this sometimes, it sometimes initializes with the collider not like we want it
+			obj.GetComponent<Collider>().enabled = false;
+			obj.GetComponent<Collider>().enabled = true;
+
+			obj = Instantiate(DeathObject, new Vector3(transform.position.x - (SpawnRadius * 1.4f), transform.position.y, transform.position.z + preSpawnDistance), Quaternion.Euler(0, 0, 90));
+			//breaks without this sometimes, it sometimes initializes with the collider not like we want it
+			obj.GetComponent<Collider>().enabled = false;
+			obj.GetComponent<Collider>().enabled = true;
+
             }
 		} 
 	
 	void organizedSpawning(){
 
 		Vector3 Center = transform.position;
-		print("Spawn center is " + Center);
 		
 		//One iteration for each new bouncepad to spawn
 		for (int j = 0; j < numToSpawn; j++){
@@ -61,10 +85,7 @@ public class genScript : MonoBehaviour
 
 			//Convert the location to a vector
 			Vector3 newSpawnLoc = new Vector3(NextX, NextY, NextZ);
-			print("spawning a pad at " + newSpawnLoc);
-
-			
-
+		
 			//This creates a new instance of the toSpawn at the newSpawnLoc with the angle that makes it face from where it is to the newCenter
 
 			//Get the vector pointing from the new spawn location toward the genBox
