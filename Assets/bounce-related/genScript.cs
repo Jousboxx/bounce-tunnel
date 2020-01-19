@@ -17,7 +17,6 @@ public class genScript : MonoBehaviour
 	//unneeded change
 	void OnTriggerEnter(Collider other){
 		if (other.gameObject.name == "PlayerBall"){		
-			Debug.Log("fsdajfka");
 			this.organizedSpawning();
 			for (int i = 0 ; i < 2; i++){
 				for (int j = 0 ; j < 2 ; j++){
