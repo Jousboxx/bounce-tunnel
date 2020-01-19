@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
 
 public class CABounce : MonoBehaviour
 {
     private float CAIntensity;
-    private ChromaticAberration ca;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +24,7 @@ public class CABounce : MonoBehaviour
             CAIntensity = 0.0f;
         }
 
-
-
-        PostProcessVolume volume = GetComponent<PostProcessVolume>();
-        volume.profile.TryGetSettings<ChromaticAberration>(out ca);
-        ca.intensity.value = CAIntensity;
-
+        //Setting CA intensity here
     }
 
     public void Bounced()
