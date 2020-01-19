@@ -11,6 +11,8 @@ public class KeyControl : MonoBehaviour
     Rigidbody RB;
     private float Speed = 800.0f;
 
+    //
+
     //Stores the rotation direction that the playerBall is facing
     private Quaternion FacingDirection;
 
@@ -29,18 +31,16 @@ public class KeyControl : MonoBehaviour
         FacingDirection = RB.rotation;
 
         //Apply forces on ball on up directional key press
-        if(Input.GetKeyDown(boostKey) && timeSinceBoost > 3){
+        if(Input.GetKeyDown(boostKey) && NewBehaviourScript.currTime >= 3.333){
             RB.AddForce(FacingDirection * Vector3.forward * Speed, ForceMode.Force);
-            timeSinceBoost = 0;
+            NewBehaviourScript.currTime -= 3.333f;
         }
 
-        Debug.Log(RB.velocity.magnitude);
         if (RB.velocity.magnitude > 3)
         {
             RB.velocity = RB.velocity * 0.97f;
         }
 
-        timeSinceBoost += Time.deltaTime;
 
 
     }
