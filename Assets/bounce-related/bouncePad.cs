@@ -5,29 +5,31 @@ using UnityEngine;
 public class bouncePad : MonoBehaviour
 {
 	private Vector3 impulse;
-	public int blast;
-	private Camera camera;
+	public int Blast;
+
+	public GameObject originalObject;
+	public GameObject fracturedObject;
+
+	private Quaternion BouncepadRotation;
+	//private Camera camera;
     // Start is called before the first frame update
     void Start()
     {
-		var xAngle = transform.eulerAngles.x * (Mathf.PI/180);
-		var yAngle = transform.eulerAngles.y * (Mathf.PI/180);
-		var zAngle = transform.eulerAngles.z * (Mathf.PI/180);
+		//Set BouncepadRotation to the rotation of this Bouncepad
+		BouncepadRotation = transform.rotation;
 
-		impulse = new Vector3(Mathf.Sin(zAngle) * -1 * blast, Mathf.Cos(xAngle + zAngle) * blast, Mathf.Sin(xAngle) * blast);
-
-		camera = Camera.main;
+		//Set impulse to the unit vector normal to the Bouncepad face multiplied by Blast
+		impulse = (BouncepadRotation * Vector3.forward * Blast);
+		//camera = Camera.main;
 	}
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 	
 	void OnTriggerEnter(Collider other){
+
 		other.GetComponent<Rigidbody>().AddForce(impulse, ForceMode.Impulse);
-		print("entered");
-		camera.GetComponent<CABounce>().Bounced();
+		Destroy(originalObject);
+		GameObject fractObj = Instantiate (fracturedObject) as GameObject;
+		fractObj.GetComponent<ExplodeScript>().Explode();
+
+		//camera.GetComponent<CABounce>().Bounced();
 	}
 }

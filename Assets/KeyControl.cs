@@ -34,7 +34,7 @@ public class KeyControl : MonoBehaviour
             timeSinceBoost = 0;
         }
 
-        Debug.Log(RB.velocity.magnitude);
+        //Debug.Log(RB.velocity.magnitude);
         if (RB.velocity.magnitude > 3)
         {
             RB.velocity = RB.velocity * 0.97f;
