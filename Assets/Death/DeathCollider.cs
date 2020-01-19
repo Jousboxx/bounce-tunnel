@@ -5,6 +5,9 @@ using UnityEngine;
 public class DeathCollider : MonoBehaviour
 {
 	void OnTriggerEnter(Collider other){
-		DeathMenu.isDead = true;
+		if (other.gameObject.name == "PlayerBall"){
+
+			DeathMenu.isDead = true;
+		}
 	}
 }
