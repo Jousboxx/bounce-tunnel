@@ -16,6 +16,7 @@ public class Zoomview : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(camera.fieldOfView);
         camera.fieldOfView = 60.0f + rb.velocity.magnitude * zoomIntensity;
     }
 }
