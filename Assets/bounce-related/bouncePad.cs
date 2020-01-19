@@ -6,7 +6,6 @@ public class bouncePad : MonoBehaviour
 {
 	private Vector3 impulse;
 	public int blast;
-	private Camera camera;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +15,6 @@ public class bouncePad : MonoBehaviour
 
 		impulse = new Vector3(Mathf.Sin(zAngle) * -1 * blast, Mathf.Cos(xAngle + zAngle) * blast, Mathf.Sin(xAngle) * blast);
 
-		camera = Camera.main;
 	}
 
     // Update is called once per frame
@@ -28,6 +26,5 @@ public class bouncePad : MonoBehaviour
 	void OnTriggerEnter(Collider other){
 		other.GetComponent<Rigidbody>().AddForce(impulse, ForceMode.Impulse);
 		print("entered");
-		camera.GetComponent<CABounce>().Bounced();
 	}
 }
