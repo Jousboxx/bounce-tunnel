@@ -29,7 +29,7 @@ public class bouncePad : MonoBehaviour
 	
 	void OnTriggerEnter(Collider other){
 		other.GetComponent<Rigidbody>().AddForce(impulse, ForceMode.Impulse);
-		print("entered");
+		Debug.Log("entered");
 		camera.GetComponent<CABounce>().Bounced();
 	}
 }
