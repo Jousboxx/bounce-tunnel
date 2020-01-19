@@ -19,7 +19,7 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         boostBar.value = (currTime / maxTime);
-        if (currTime / maxTime < .333)
+        if (currTime / maxTime < .2)
         {
             Fill.color = Color.red;
         }
