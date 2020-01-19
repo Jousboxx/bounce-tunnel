@@ -14,7 +14,7 @@ public class genScript : MonoBehaviour
     // This script will simply instantiate the Prefab when the game starts.
     void Start(){
     }
-	
+	//unneeded change
 	void OnTriggerEnter(Collider other){
 		if (other.gameObject.name == "PlayerBall"){		
 			Debug.Log("fsdajfka");
