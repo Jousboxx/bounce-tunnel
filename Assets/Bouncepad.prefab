@@ -92,7 +92,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.04, y: 0.03999999, z: 0.005999999}
+  m_Size: {x: 0.05, y: 0.045, z: 0.0065}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1174266002789324459
 MonoBehaviour:
@@ -106,9 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55113660292c1b49b860f53a10a1651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Blast: 0
-  originalObject: {fileID: 0}
-  fracturedObject: {fileID: 0}
+  Blast: 3
+  Player: {fileID: 5110080452293019166, guid: 9817cc2df3dde214aa8dd41cad2151c6, type: 3}
 --- !u!65 &2479323034198405431
 BoxCollider:
   m_ObjectHideFlags: 0
