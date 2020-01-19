@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeathMenu : MonoBehaviour
 {
-    public static bool isDead = true;
+    public static bool isDead = false;
 	
 	[SerializeField] private string DeathKeyName = "l";//for testing purposes
 	
@@ -18,14 +18,11 @@ public class DeathMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if(Input.GetKeyDown(DeathKeyName))
-		{
-			if(isDead){
-				PauseMenu.GameIsPaused = true;
-				Cursor.lockState = CursorLockMode.None;
-				deathMenuUI.SetActive(true);
-				Time.timeScale = 0f;
-			}
+		if(isDead){
+			PauseMenu.GameIsPaused = true;
+			Cursor.lockState = CursorLockMode.None;
+			deathMenuUI.SetActive(true);
+			Time.timeScale = 0f;
 		}
     }
 }
