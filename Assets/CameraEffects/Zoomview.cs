@@ -6,6 +6,7 @@ public class Zoomview : MonoBehaviour
 {
     public float zoomIntensity;
     public Camera camera;
+
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()

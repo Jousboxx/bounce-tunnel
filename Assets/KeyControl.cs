@@ -20,9 +20,9 @@ public class KeyControl : MonoBehaviour
     private bool latchEngaged = false;
 
     //Accessed by BouncePad methods for facilitating the latch timing
-    public int timeSinceBounce = 0;
+    public float timeSinceBounce = 0;
 
-    private int framesSinceBoost;
+    private float framesSinceBoost;
 
     //True while the latch key is being held down, regardless of engagement or bounce time
     private bool latchKeyPressed;
@@ -41,8 +41,8 @@ public class KeyControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeSinceBounce ++;
-        framesSinceBoost ++;
+        timeSinceBounce += Time.deltaTime * 60.0f;
+        framesSinceBoost += Time.deltaTime * 60.0f;
         //Update FacingDirection
         FacingDirection = RB.rotation;
 
@@ -51,7 +51,7 @@ public class KeyControl : MonoBehaviour
         if(Input.GetKeyDown(boostKey) && NewBehaviourScript.currTime >= 1){
             RB.AddForce(RB.velocity * (-0.6f), ForceMode.Impulse);
             RB.AddForce(FacingDirection * Vector3.forward * Speed, ForceMode.Impulse);
-            NewBehaviourScript.currTime -= 1f;
+            NewBehaviourScript.currTime -= (Time.deltaTime * 60.0f);
             framesSinceBoost = 0;
         }else if(framesSinceBoost > 1){
             //We know we didn't boost this frame or the last frame
@@ -99,7 +99,7 @@ public class KeyControl : MonoBehaviour
                 disengageLatch();
                 NewBehaviourScript.currTime = 0.0f;
             }else{
-                NewBehaviourScript.currTime -= 0.2f;
+                NewBehaviourScript.currTime -= (Time.deltaTime * 30.0f) * 0.2f;
             }   
         }
         lastVelocity = RB.velocity;
