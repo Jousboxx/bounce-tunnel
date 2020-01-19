@@ -82,10 +82,7 @@ public class KeyControl : MonoBehaviour
         if(latchKeyPressed && (! latchEngaged)){
             if(timeSinceBounce < 30){
                  engageLatch();
-            }else{
-                print("whoops! timeSinceBounce is " + timeSinceBounce);
             }
-           
         }
 
         //Disengage latch on release
@@ -94,6 +91,16 @@ public class KeyControl : MonoBehaviour
 
         }
 
+        //Deduct mana for engaging latch, if mana goes under 0, disengage latch
+        if(latchEngaged){
+
+            if(NewBehaviourScript.currTime < 0.2f){
+                disengageLatch();
+                NewBehaviourScript.currTime = 0.0f;
+            }else{
+                NewBehaviourScript.currTime -= 0.2f;
+            }   
+        }
         lastVelocity = RB.velocity;
     }
 
