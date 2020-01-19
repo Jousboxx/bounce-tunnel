@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3163882147598580671}
   - component: {fileID: 289208497219709670}
   m_Layer: 0
-  m_Name: BouncePad
+  m_Name: Bouncepad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55113660292c1b49b860f53a10a1651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blast: 1
+  Blast: 3
 --- !u!54 &289208497219709670
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -4,27 +4,36 @@ using UnityEngine;
 
 public class bouncePad : MonoBehaviour
 {
-	private Vector3 impulse;
-	public int blast;
+	private Vector3 impulse1;
+	private Vector3 impulse2;
+	public int Blast;
+
+	private Quaternion PlayerRotation;
+	private Quaternion BouncepadRotation;
+
     // Start is called before the first frame update
     void Start()
     {
-		var xAngle = transform.eulerAngles.x * (Mathf.PI/180);
-		var yAngle = transform.eulerAngles.y * (Mathf.PI/180);
-		var zAngle = transform.eulerAngles.z * (Mathf.PI/180);
-
-		impulse = new Vector3(Mathf.Sin(zAngle) * -1 * blast, Mathf.Cos(xAngle + zAngle) * blast, Mathf.Sin(xAngle) * blast);
+		//Set BouncepadRotation to the rotation of this Bouncepad
+		BouncepadRotation = transform.rotation;
+		//Set impulse to the unit vector normal to the Bouncepad face multiplied by Blast
+		impulse1 = (BouncepadRotation * Vector3.forward * Blast);
 
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-	
 	void OnTriggerEnter(Collider other){
-		other.GetComponent<Rigidbody>().AddForce(impulse, ForceMode.Impulse);
-		print("entered");
+
+		//Get the player's rotation
+		PlayerRotation = other.transform.rotation;
+
+		//Consider the player's direction and give them a little boost forward	
+		impulse2 = (PlayerRotation * Vector3.forward * (Blast/2));
+
+		//Apply impulse to player's rigid body
+		other.GetComponent<Rigidbody>().AddForce((impulse1 + impulse2), ForceMode.Impulse);
+
+		Vector3 temp = (impulse1 + impulse2);
+		print("Applying impulse of magnitude " + temp.magnitude);
 	}
+	
 }
