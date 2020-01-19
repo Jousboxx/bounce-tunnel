@@ -111,8 +111,15 @@ public class KeyControl : MonoBehaviour
     }
 
     void disengageLatch(){
-        impulse = (FacingDirection * Vector3.forward * tempVelocity);
+        impulse = (FacingDirection * Vector3.forward * (tempVelocity * 1.0f)); //Give a slight boost on latch release
         RB.AddForce(impulse, ForceMode.Impulse);
+
+        //Boost mana upon release of latch
+        NewBehaviourScript.currTime += 6.0f;
+        if(NewBehaviourScript.currTime > 10.0f){
+            NewBehaviourScript.currTime = 10.0f;   
+        }
+
         latchEngaged = false;
     }
 }
